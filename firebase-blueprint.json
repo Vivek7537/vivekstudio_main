@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "SiteSettings": {
+      "title": "Site Settings",
+      "description": "Global configuration for the website including hero, portfolio, and contact info.",
+      "type": "object",
+      "properties": {
+        "navbar": { "type": "object" },
+        "hero": { "type": "object" },
+        "topRated": { "type": "object" },
+        "expertise": { "type": "object" },
+        "arsenal": { "type": "object" },
+        "portfolio": { "type": "object" },
+        "testimonials": { "type": "object" },
+        "reels": { "type": "object" },
+        "contact": { "type": "object" },
+        "footer": { "type": "object" },
+        "sectionOrder": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "Information sent by visitors via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "message", "timestamp"]
+    }
+  },
+  "firestore": {
+    "config/site": {
+      "schema": "SiteSettings",
+      "description": "Single document holding the entire site's configuration."
+    },
+    "messages/{messageId}": {
+      "schema": "ContactMessage",
+      "description": "Collection of messages submitted by users."
+    }
+  }
+}
